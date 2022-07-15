@@ -1,10 +1,13 @@
 <script setup>
+let sharingVideo = false;
 async function shareVideo() {
   // Web Share API is supported
+  sharingVideo = true;
   const response = await fetch(
     'https://createyourzenspaces.ams3.digitaloceanspaces.com/holiday-vacation-resort-resort-640_Zqu9ctP6.mp4'
   );
   const blob = await response.blob();
+  sharingVideo = false;
   const filesArray = [
     new File([blob], 'video.mp4', {
       type: 'video/mp4',
@@ -21,7 +24,12 @@ async function shareVideo() {
     navigator.share(shareData);
   } else {
     // Fallback
-    alert('Does not support Web share');
+    window
+      .open(
+        'https://createyourzenspaces.ams3.digitaloceanspaces.com/holiday-vacation-resort-resort-640_Zqu9ctP6.mp4',
+        '_blank'
+      )
+      .focus();
   }
 }
 </script>
@@ -39,5 +47,7 @@ async function shareVideo() {
       controls
     />
     <br> <button @click="shareVideo">Share the video</button>
+    {{sharingVideo}}
+    <p v-if="sharingVideo">Downloading video for share usage...</p>
   </div>
 </template>
