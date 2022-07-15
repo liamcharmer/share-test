@@ -29,6 +29,10 @@ async function shareVideo() {
   <div>
     <p>Hello</p>
     <video
+      autoplay
+      loop
+      muted
+      playsinline
       width="300px"
       height="300px"
       src="https://createyourzenspaces.ams3.digitaloceanspaces.com/holiday-vacation-resort-resort-640_Zqu9ctP6.mp4"
