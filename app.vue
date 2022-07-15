@@ -16,6 +16,8 @@ async function shareVideo() {
   ];
   const shareData = {
     files: filesArray,
+    title: 'Title here',
+    text: 'This is some text that can be provided',
   };
   console.log(shareData);
   console.log(navigator.canShare);
